@@ -119,11 +119,11 @@ preprocess_sleep_file <- function(source, patient, channels) {
       "xnew" = x,
       "class" = SDD$sleep_state
     ) %>%
-      dplyr::group_by(class) %>%
-      dplyr::mutate(xnew = logit(xnew),
-             xnew = (xnew - mean(xnew) / stats::sd(xnew))) %>%
-      dplyr::ungroup() %>%
-      dplyr::select(xnew) %>%
+      #dplyr::group_by(class) %>%
+      #dplyr::mutate(xnew = logit(xnew),
+      #       xnew = (xnew - mean(xnew) / stats::sd(xnew))) %>%
+      #dplyr::ungroup() %>%
+      #dplyr::select(xnew) %>%
       dplyr::pull()
   })
   # Add patient and sleep states

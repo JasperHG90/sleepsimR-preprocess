@@ -123,7 +123,7 @@ preprocess_sleep_file <- function(source, patient, channels) {
       #dplyr::mutate(xnew = logit(xnew),
       #       xnew = (xnew - mean(xnew) / stats::sd(xnew))) %>%
       #dplyr::ungroup() %>%
-      #dplyr::select(xnew) %>%
+      dplyr::select(xnew) %>%
       dplyr::pull()
   })
   # Add patient and sleep states
@@ -159,7 +159,7 @@ main <- function() {
     file_check <- file.exists(paste0(args[["target"]], "/", "EEG_data_final.rds"))
     # Check if file exists
     if(file_check & !(args[["force"]])) {
-      logger_info("Sleep data is already downloaded and preprocessed. Quitting now. If you want to re-run the entire script, add 'force_preprocess' as an argument to this script.")
+      logger_info("Sleep data is already downloaded and preprocessed. Quitting now. If you want to re-run the entire script, add '--force_preprocess' as an argument to this script.")
       return(NULL)
     }
   }
